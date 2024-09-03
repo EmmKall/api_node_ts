@@ -47,7 +47,11 @@ const update = async ( req: Request, res: Response ) => {
         const { body: item } = req;
         const { id } = req.params;
         const data = await updateS( item, id );
-        handleSucessResponse( res, 200, 'Request success', data );
+        const isValid = await validDataInput( res, KEYS, item );
+        if( isValid ){
+            const data = await storeS( item );
+            handleSucessResponse( res, 200, 'Request success', data );
+        }
     } catch (error) {
         handleErrorHttp( res, 'ERROR_TO_PROCESS', error );
     }
