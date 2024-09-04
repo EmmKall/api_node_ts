@@ -1,12 +1,15 @@
-export interface User {
+import { Auth } from "./auth.interface";
 
-    id:             string;
+export interface User extends Auth
+{
+    _id:            string;
     name:           string;
     last_name:      string;
-    email:          string;
     phone:          string;
-    password:       string;
+    token:          string;
     email_verified: boolean;
+    rol:            number;
+    profile:        String;
     created_at:     string;
     updated_at:     string;
 }

@@ -3,6 +3,7 @@ import { indexS, findByIdS, storeS, updateS, destroyS } from '../services/items.
 import { handleErrorHttp, handleSucessResponse } from "../utils/error.utils";
 import { validDataInput } from '../utils/validation.utils';
 import { TypeInput } from '../interface/typeInput.interface';
+import { RequestExt } from '../interface/RequestExt.interface';
 
 const KEYS: Array<TypeInput> = [
     { name: 'name', min: 5, required: true, type: 'string' },
@@ -10,7 +11,7 @@ const KEYS: Array<TypeInput> = [
     { name: 'price', min: 0.1, required: true, type: 'number' }
 ];
 
-const index = async ( req: Request, res: Response ) => {
+const index = async ( req: RequestExt, res: Response ) => {
     try {
         const data = await indexS();
         handleSucessResponse( res, 200, 'Request success', data );

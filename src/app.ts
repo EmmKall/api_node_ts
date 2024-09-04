@@ -18,3 +18,5 @@ app.listen( PORT, () => {
     console.log( `Listening on port: ${PORT}` );
 });
 
+
+//sudo systemctl start mongod.service
